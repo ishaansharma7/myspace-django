@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.exceptions import ValidationError
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, full_name, contact_number, password=None):
@@ -43,6 +44,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.username
+
+    def clean(self):
+        if not self.contact_number.isdigit() or len(self.contact_number) != 10:
+            raise ValidationError('Please enter 10 digit contact number')
 
 
 

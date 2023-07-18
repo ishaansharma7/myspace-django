@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Residents{% endblock %}
+{% block title %}Community Events{% endblock %}
 
 {% block body_block %}
 
 
 <div class="row justify-content-center">
     <div class="col-auto">
-        <a href="{% url 'resident_app:resident_create' %}" class="btn btn-warning my-3">Create Resident</a>
+        <a href="{% url 'resident_app:comm_create' %}" class="btn btn-warning my-3">Create Community Event</a>
     </div>
 </div>
 
@@ -16,23 +16,20 @@
     <div class="col-md-2 my-2"></div>
     <div class="col-md-8 my-2">
         <div class="container mt-4">
-            <h1>Residents List</h1>
+            <h1>Community Events</h1>
             <ul class="list-group mt-4">
                 {% for record in page_obj %}
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-auto mt-4 mx-auto">
-                            <strong>Name:</strong> {{ record.resident_name }}
+                            <strong>Event:</strong> {{ record.event_name }}
                         </div>
                         <div class="col-auto mt-4 mx-auto">
-                            <strong>Email:</strong> {{ record.email_id }}
-                        </div>
-                        <div class="col-auto mt-4 mx-auto">
-                            <strong>Place:</strong> {{ record.resident_building_name }}
+                            <strong>Date:</strong> {{ record.event_date }}
                         </div>
                         <div class="col-auto mx-auto">
                             <!-- Column 3: Edit button -->
-                            <a href="{% url 'resident_app:resident_detail' pk=record.id %}" class="btn btn-warning my-3">Details</a>
+                            <a href="{% url 'resident_app:comm_detail' pk=record.id %}" class="btn btn-warning my-3">Details</a>
                         </div>
                     </div>
                 </li>
@@ -47,7 +44,7 @@
     <div class="col-md-2 my-2">
         <ul>
             <li>Click on Detail for full details</li>
-            <li>Click on Create for adding new resident</li>
+            <li>Click on Create for adding new events</li>
           </ul>
     </div>
 </div>
