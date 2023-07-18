@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning mb-4">
         <img src="{% static 'base/house.png' %}" alt="My Image" style="height: 45px; width: auto;">
-        <a class="navbar-brand ml-1 text-dark" href="#"><strong>Myspace</strong></a>
+        <a class="navbar-brand ml-1 text-dark" href="{% url 'resident_app:home' %}"><strong>Myspace</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,18 +26,9 @@
             <a class="nav-link text-dark" href="#">{{ request.user.full_name }} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-            <a class="nav-link text-dark" href="#">Create<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
             <a class="nav-link text-dark" href="{% url 'accounts_app:logout' %}">logout <span class="sr-only">(current)</span></a>
             </li>
             {% else %}
-            <li class="nav-item active">
-              <a class="nav-link text-dark" href="#">Create<span class="sr-only">(current)</span></a>
-              </li>
-            <li class="nav-item active">
-            <a class="nav-link text-dark" href="{% url 'accounts_app:login' %}">log in <span class="sr-only">(current)</span></a>
-            </li>
             {% endif %}
           </ul>
         </div>

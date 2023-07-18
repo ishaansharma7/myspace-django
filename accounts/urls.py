@@ -8,7 +8,7 @@ app_name = 'accounts_app'
 urlpatterns = [
     path('index/', index, name='index'),
     path('register/', RegisterView.as_view(), name='register'),
-    path('login/', CustomLoginView.as_view(), name='login'),
+    path('', CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='accounts_app:login'), name='logout'),
     path('test/restricted-view/', test_restricted_view, name='test_restricted_view')
 ]
